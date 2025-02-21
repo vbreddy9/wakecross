@@ -11,6 +11,11 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(requestIp.mw());
 
+app.get("/home" ,async(req,res) => {
+  console.log("request incoming")
+  res.status(200).json("Server running 5000");
+})
+
 // Setup Nodemailer transport
 const transporter = nodemailer.createTransport({
   service: 'gmail',
