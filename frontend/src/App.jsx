@@ -5,6 +5,7 @@ import ServicesSection from './ServicesSection';
 import Footer from './Footer';
 import WhyChooseAndContactForm from './WhyChooseAndContactForm';
 import ContactDetails from './ContactDetails';
+import WhatsAppButton from './WhatsAppButton';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <WhyChooseAndContactForm />
       <ServicesSection />
       <ContactDetails/>
+      <WhatsAppButton/>
       <Footer />
     </div>
   );
