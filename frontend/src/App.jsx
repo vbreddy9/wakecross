@@ -1,21 +1,28 @@
 import React from 'react';
 import Navbar from './Navbar';
 import HeroSection from './HeroSection';
-import ServicesSection from './ServicesSection';
 import Footer from './Footer';
-import WhyChooseAndContactForm from './WhyChooseAndContactForm';
 import ContactDetails from './ContactDetails';
-import WhatsAppButton from './WhatsAppButton';
+import RegistrationForm from './RegistrationForm.jsx';
+import ReviewCard from './ReviewCard.jsx';
+import WorryFreeSection from './WorryFreeSection.jsx';
+import InsuranceInfo from './InsuranceInfo.jsx';
+import DentalFAQ from './DentalFAQ.jsx';
+import DentalServices from './DentalServices.jsx';
+
 
 const App = () => {
   return (
     <div>
       <Navbar />
       <HeroSection />
-      <WhyChooseAndContactForm />
-      <ServicesSection />
+      <RegistrationForm/>
+      <ReviewCard/>
+      <WorryFreeSection/>
+      <InsuranceInfo/>
+      <DentalServices/>
+      <DentalFAQ/>
       <ContactDetails/>
-      <WhatsAppButton/>
       <Footer />
     </div>
   );

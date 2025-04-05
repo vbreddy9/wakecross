@@ -1,21 +1,28 @@
-import React from 'react';
-import { FaPhoneAlt } from 'react-icons/fa'; // Mobile phone icon import
-import mlogo from './assets/british-elderly-care.webp'; // Import the logo image
+import React from "react";
+import { FaPhoneAlt } from "react-icons/fa";
+import mlogo from "./assets/logo-w.png";
 
 const Navbar = () => {
   return (
-    <header className="container sticky top-0 z-50 flex justify-between items-center bg-customDark text-white">
-      {/* Logo */}
-      <div className="flex">
-      <a href="/">
-          <img src={mlogo} alt="ElderCare Logo" className="w-30 h-20 mr-2" /> {/* Logo with size control */}
+    <header className="absolute top-0 left-0 w-full z-50 bg-white">
+      <div className="container mx-auto flex items-center justify-between px-6 py-4">
+        {/* Logo */}
+        <a href="/">
+          <img
+            src={mlogo}
+            alt="wake cross familty"
+            className="w-28 h-16 sm:w-44 sm:h-20"
+          />
+        </a>
+
+        {/* Phone */}
+        <a
+          href="tel:+19194530777"
+          className="text-black border-2 border rounded py-2 px-2 text-lg flex items-center gap-2 hover:text-gray-500"
+        >
+          <FaPhoneAlt /> (919)-453-0777
         </a>
       </div>
-      
-      {/* Phone number with mobile icon */}
-      <a href="tel:+01902921475" className="text-lg flex items-center hover:text-gray-200">
-        <FaPhoneAlt className="mr-2" /> +01902921475
-      </a>
     </header>
   );
 };
