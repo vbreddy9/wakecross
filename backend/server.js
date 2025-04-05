@@ -1,114 +1,107 @@
 const express = require('express');
-const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
+const nodemailer = require('nodemailer');
 const cors = require('cors');
 const requestIp = require('request-ip');
 
 const app = express();
-const port = 5000;
+const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+// ✅ Middleware
+app.use(cors({
+  origin: "https://wakecross.britishelderlycare.com", // ✅ Replace with your frontend domain
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+}));
 app.use(bodyParser.json());
 app.use(requestIp.mw());
 
-app.get("/home" ,async(req,res) => {
-  console.log("request incoming")
-  res.status(200).json("Server running 5000");
-})
-
-// Setup Nodemailer transport
+// ✅ Nodemailer config
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'info@britishelderlycare.com', // Admin Email
-    pass: 'ojyj rdit vbpf bkpi', // Use an actual App Password
-  },
+    user: 'info@britishelderlycare.com', // ✅ Your verified email
+    pass: 'ojyj rdit vbpf bkpi'          // ✅ Gmail App Password
+  }
 });
 
-// 📌 Endpoint: Send Contact Form Data to Admin & Client
-app.post('/send-email', (req, res) => {
-  const {
-    name, email, mobile, age, postCode, existingCare, service,
-    healthConditions, careTiming, hoursPerDay, daysPerWeek, emergencyContact, fundingSource, livingArrangements, pageUrl
-  } = req.body;
+// ✅ Test Route
+app.get('/', (req, res) => {
+  res.send('Backend is running for Elderly Care Dental Appointments');
+});
 
+// ✅ Handle Appointment Form Submission
+app.post('/send-email', (req, res) => {
+  const { firstName, lastName, email, phoneNumber, dob, referralSource } = req.body;
+  const fullName = `${firstName} ${lastName}`;
   const userIp = req.clientIp;
 
-  // 📩 Admin Email (Lead Notification)
+  // Admin Email
   const adminMailOptions = {
-    from: `"${name}" <${email}>`,
+    from: `"${fullName}" <${email}>`,
     to: 'info@britishelderlycare.com',
     replyTo: email,
-    subject: 'New Lead Appointment Request',
+    subject: 'New Registration - Dental Appointment Request',
     html: `
       <div style="font-family: Arial, sans-serif; line-height: 1.6;">
         <div style="background-color: #182033; color: white; padding: 10px; text-align: center;">
-          <h2>New Lead Appointment Request</h2>
+          <h2>New Dental Appointment Registration</h2>
         </div>
         <div style="padding: 20px;">
-          <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
-            <tr style="background-color: #ffffff;"><td><strong>Name:</strong></td><td>${name}</td></tr>
-            <tr style="background-color: #f2f2f2;"><td><strong>Email:</strong></td><td>${email}</td></tr>
-            <tr style="background-color: #ffffff;"><td><strong>Mobile:</strong></td><td>${mobile}</td></tr>
-            <tr style="background-color: #f2f2f2;"><td><strong>Age:</strong></td><td>${age}</td></tr>
-            <tr style="background-color: #ffffff;"><td><strong>Post Code:</strong></td><td>${postCode}</td></tr>
-            <tr style="background-color: #f2f2f2;"><td><strong>Existing Care:</strong></td><td>${existingCare}</td></tr>
-            <tr style="background-color: #ffffff;"><td><strong>Service:</strong></td><td>${service}</td></tr>
-            <tr style="background-color: #f2f2f2;"><td><strong>Health Conditions:</strong></td><td>${healthConditions}</td></tr>
-            <tr style="background-color: #ffffff;"><td><strong>Preferred Care Timing:</strong></td><td>${careTiming}</td></tr>
-            <tr style="background-color: #f2f2f2;"><td><strong>Hours Care Per Day:</strong></td><td>${hoursPerDay}</td></tr>
-            <tr style="background-color: #ffffff;"><td><strong>Days Care Per Week:</strong></td><td>${daysPerWeek}</td></tr>
-            <tr style="background-color: #f2f2f2;"><td><strong>Emergency Contact:</strong></td><td>${emergencyContact}</td></tr>
-            <tr style="background-color: #ffffff;"><td><strong>Funding Source:</strong></td><td>${fundingSource}</td></tr>
-            <tr style="background-color: #f2f2f2;"><td><strong>Living Arrangements:</strong></td><td>${livingArrangements}</td></tr>
-            <tr style="background-color: #ffffff;"><td><strong>User IP:</strong></td><td>${userIp || 'Not Available'}</td></tr>
-            <tr style="background-color: #f2f2f2;"><td><strong>Page URL:</strong></td><td>${pageUrl || 'Not Provided'}</td></tr>
+          <table style="width: 100%; font-size: 14px;">
+            <tr><td><strong>Full Name:</strong></td><td>${fullName}</td></tr>
+            <tr><td><strong>Email:</strong></td><td>${email}</td></tr>
+            <tr><td><strong>Phone Number:</strong></td><td>${phoneNumber}</td></tr>
+            <tr><td><strong>Date of Birth:</strong></td><td>${dob}</td></tr>
+            <tr><td><strong>Referral Source:</strong></td><td>${referralSource || 'Not provided'}</td></tr>
+            <tr><td><strong>User IP:</strong></td><td>${userIp || 'Not Available'}</td></tr>
           </table>
         </div>
         <div style="background-color: #182033; color: white; padding: 10px; text-align: center;">
-          <p>&copy; 2024 British Elderly Care</p>
+          <p>&copy; 2024 Wake Cross Family Dentistry</p>
         </div>
       </div>
     `,
   };
 
+  // Send to Admin
   transporter.sendMail(adminMailOptions, (error, info) => {
     if (error) {
-      console.error('Error sending email to admin:', error);
+      console.error('❌ Error sending to admin:', error);
       return res.status(500).json({ message: 'Failed to send email to admin', error });
     }
 
-    console.log('Admin Email sent:', info.response);
+    console.log('✅ Admin Email Sent:', info.response);
 
-    // 📩 Auto-Reply to the Client
+    // Auto-Reply to Client
     const clientMailOptions = {
-      from: `"British Elderly Care" <info@britishelderlycare.com>`,
+      from: `"Wake Cross Family Dentistry" <info@britishelderlycare.com>`,
       to: email,
-      subject: 'Thank You for Your Inquiry - British Elderly Care',
+      subject: 'Thank You for Registering - Dental Appointment',
       html: `
         <div style="font-family: Arial, sans-serif; line-height: 1.6;">
           <div style="background-color: #182033; color: white; padding: 10px; text-align: center;">
-            <h2>Thank You for Reaching Out!</h2>
+            <h2>Thank You for Scheduling an Appointment!</h2>
           </div>
           <div style="padding: 20px;">
-            <p>Dear ${name},</p>
-            <p>Thank you for contacting <strong>British Elderly Care</strong>. We have received your request for care services, and our team will get back to you shortly.</p>
-            <p><strong>Summary of Your Request:</strong></p>
+            <p>Dear ${firstName},</p>
+            <p>Thank you for registering for a dental appointment. Our team will contact you shortly.</p>
+            <p><strong>Your Submitted Info:</strong></p>
             <ul>
-              <li><strong>Name:</strong> ${name}</li>
+              <li><strong>Name:</strong> ${fullName}</li>
               <li><strong>Email:</strong> ${email}</li>
-              <li><strong>Mobile:</strong> ${mobile}</li>
-              <li><strong>Age:</strong> ${age}</li>
-              <li><strong>Service Requested:</strong> ${service}</li>
+              <li><strong>Phone:</strong> ${phoneNumber}</li>
+              <li><strong>DOB:</strong> ${dob}</li>
+              <li><strong>Referral:</strong> ${referralSource || 'Not Provided'}</li>
             </ul>
-            <p>For urgent assistance, call us at <strong><a href="tel:+01902921475" className="text-lg flex items-center hover:text-gray-200">
-                    <FaPhoneAlt className="mr-2" /> +01902921475
-                  </a></strong>.</p>
-            <p>Best regards,</p>
-            <p><strong>British ElderCare Team</strong></p>
+            <p>If you have any questions, feel free to call us at 
+              <strong><a href="tel:+19194530777" style="color: inherit; text-decoration: none;">(919)-453-0777</a></strong>.
+            </p>
+            <p>Warm regards,<br><strong>Wake Cross Family Dentistry</strong></p>
           </div>
           <div style="background-color: #182033; color: white; padding: 10px; text-align: center;">
-            <p>&copy; 2024 British Elderly Care</p>
+            <p>&copy; 2025 Wake Cross Family Dentistry</p>
           </div>
         </div>
       `,
@@ -116,52 +109,17 @@ app.post('/send-email', (req, res) => {
 
     transporter.sendMail(clientMailOptions, (error, info) => {
       if (error) {
-        console.error('Error sending auto-reply email:', error);
-        return res.status(500).json({ message: 'Failed to send auto-reply email', error });
+        console.error('❌ Auto-reply Error:', error);
+        return res.status(500).json({ message: 'Failed to send auto-reply', error });
       }
 
-      console.log('Auto-reply Email sent:', info.response);
+      console.log('✅ Auto-reply Sent:', info.response);
       res.status(200).json({ message: 'Emails sent successfully' });
     });
   });
 });
 
-// 📌 Endpoint: Notify Admin When a Visitor Arrives
-app.post('/notify-admin', (req, res) => {
-  const { ip, city, region, country, browser, referrer, visitTime } = req.body;
-
-  const mailOptions = {
-    from: `"British Elderly Care" <info@britishelderlycare.com>`,
-    to: 'info@britishelderlycare.com',
-    subject: 'New Visitor Alert - British Elderly Care',
-    html: `
-      <div style="font-family: Arial, sans-serif; line-height: 1.6;">
-        <div style="background-color: #182033; color: white; padding: 10px; text-align: center;">
-          <h2>New Visitor Alert</h2>
-        </div>
-        <div style="padding: 20px;">
-          <p><strong>Visitor Details:</strong></p>
-          <ul>
-            <li><strong>IP Address:</strong> ${ip}</li>
-            <li><strong>Location:</strong> ${city}, ${region}, ${country}</li>
-            <li><strong>Browser:</strong> ${browser}</li>
-            <li><strong>Referrer:</strong> ${referrer}</li>
-            <li><strong>Visit Time:</strong> ${visitTime}</li>
-          </ul>
-        </div>
-        <div style="background-color: #182033; color: white; padding: 10px; text-align: center;">
-            <p>&copy; 2024 British Elderly Care</p>
-          </div>
-      </div>
-    `,
-  };
-
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      return res.status(500).json({ message: 'Failed to notify admin', error });
-    }
-    res.status(200).json({ message: 'Admin notified successfully' });
-  });
+// ✅ Start Server
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
 });
-
-app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
