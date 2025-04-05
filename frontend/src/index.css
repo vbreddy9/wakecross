@@ -10,7 +10,7 @@ html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  overflow-x: hidden;
+  
 }
 .container {
  padding: 0 10% 0 10%;
@@ -18,6 +18,6 @@ html, body {
 
 @media (min-width: 1024px) {
   .container {
-    padding: 0 5%;
+    padding: 0 10%;
   }
 }
