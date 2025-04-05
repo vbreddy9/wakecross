@@ -5,7 +5,7 @@ import mlogo from "./assets/logo-w.png";
 const Navbar = () => {
   return (
     <header className="absolute top-0 left-0 w-full z-50 bg-white">
-      <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 py-2 sm:py-4">
+     <div className="container mx-auto flex flex-row items-center justify-between gap-2 px-4 sm:px-6 py-2 sm:py-4">
         {/* Logo */}
         <a href="/">
           <img
