@@ -9,21 +9,21 @@ const PORT = process.env.PORT || 5000;
 
 // ✅ Middleware
 app.use(cors({
-  origin: "https://wakecross.britishelderlycare.com", // ✅ Replace with your frontend domain
+  origin: "https://wakecross.britishelderlycare.com", // Replace with your frontend domain
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true
+  credentials: true,
 }));
 app.use(bodyParser.json());
 app.use(requestIp.mw());
 
-// ✅ Nodemailer config
+// ✅ Nodemailer Configuration
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'info@britishelderlycare.com', // ✅ Your verified email
-    pass: 'ojyj rdit vbpf bkpi'          // ✅ Gmail App Password
-  }
+    user: 'info@britishelderlycare.com', // Your Gmail
+    pass: 'ojyj rdit vbpf bkpi',         // Gmail App Password
+  },
 });
 
 // ✅ Test Route
@@ -31,13 +31,13 @@ app.get('/', (req, res) => {
   res.send('Backend is running for Elderly Care Dental Appointments');
 });
 
-// ✅ Handle Appointment Form Submission
+// ✅ Email Submission Endpoint
 app.post('/send-email', (req, res) => {
   const { firstName, lastName, email, phoneNumber, dob, referralSource } = req.body;
   const fullName = `${firstName} ${lastName}`;
   const userIp = req.clientIp;
 
-  // Admin Email
+  // Admin Email Content
   const adminMailOptions = {
     from: `"${fullName}" <${email}>`,
     to: 'info@britishelderlycare.com',
@@ -65,7 +65,7 @@ app.post('/send-email', (req, res) => {
     `,
   };
 
-  // Send to Admin
+  // Send Admin Email
   transporter.sendMail(adminMailOptions, (error, info) => {
     if (error) {
       console.error('❌ Error sending to admin:', error);
@@ -74,7 +74,7 @@ app.post('/send-email', (req, res) => {
 
     console.log('✅ Admin Email Sent:', info.response);
 
-    // Auto-Reply to Client
+    // Auto-reply to Client
     const clientMailOptions = {
       from: `"Wake Cross Family Dentistry" <info@britishelderlycare.com>`,
       to: email,
@@ -86,7 +86,7 @@ app.post('/send-email', (req, res) => {
           </div>
           <div style="padding: 20px;">
             <p>Dear ${firstName},</p>
-            <p>Thank you for registering for a dental appointment. Our team will contact you shortly.</p>
+            <p>Thank you for registering for a dental appointment with <strong>Wake Cross Family Dentistry</strong>. Our team will contact you shortly.</p>
             <p><strong>Your Submitted Info:</strong></p>
             <ul>
               <li><strong>Name:</strong> ${fullName}</li>
