@@ -16,8 +16,4 @@ html, body {
  padding: 0 10% 0 10%;
 }
 
-@media (min-width: 1024px) {
-  .container {
-    padding: 0 5%;
-  }
-}
+
