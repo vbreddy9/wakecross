@@ -11,7 +11,7 @@ const Navbar = () => {
           <img
             src={mlogo}
             alt="wake cross familty"
-            className="w-28 h-16 sm:w-44 sm:h-20"
+            className="w-30 h-16 sm:w-44 sm:h-20"
           />
         </a>
 
