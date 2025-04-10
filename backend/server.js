@@ -5,11 +5,21 @@ const cors = require("cors");
 const requestIp = require("request-ip");
 
 const app = express();
-const PORT = 5000;
 
-app.use(cors());
+app.use(cors({
+  origin: "https://wakecross.vercel.app/",
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"],
+  credentials: true
+}));
+
 app.use(bodyParser.json());
 app.use(requestIp.mw());
+
+app.get("/home", (req, res) => {
+  console.log("GET /home: Health check");
+  res.status(200).json("Server running");
+});
 
 // Email transporter
 const transporter = nodemailer.createTransport({
