@@ -8,7 +8,7 @@ import ReviewCard from './ReviewCard.jsx';
 import WorryFreeSection from './WorryFreeSection.jsx';
 import InsuranceInfo from './InsuranceInfo.jsx';
 import DentalFAQ from './DentalFAQ.jsx';
-import DentalServices from './DentalServices.jsx';
+
 
 
 const App = () => {
@@ -20,7 +20,6 @@ const App = () => {
       <ReviewCard/>
       <WorryFreeSection/>
       <InsuranceInfo/>
-      <DentalServices/>
       <DentalFAQ/>
       <ContactDetails/>
       <Footer />
