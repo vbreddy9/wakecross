@@ -47,7 +47,7 @@ const RegistrationForm = () => {
     if (!validate()) return;
 
     try {
-      await axios.post("http://localhost:5000/send-email", formData);
+      await axios.post("https://wakecross-backend.vercel.app/send-email", formData);
       alert("Form Submitted Successfully!");
       setFormData({
         firstName: "",
