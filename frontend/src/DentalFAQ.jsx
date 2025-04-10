@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 
+
 const faqs = [
   {
     question: "How often should I visit the dentist?",
@@ -32,33 +33,28 @@ const DentalFAQ = () => {
   };
 
   return (
-    <div className="bg-gray-50 py-16 px-6 sm:px-12">
-      <div className="max-w-4xl mx-auto text-center">
-        {/* Heading */}
-        <h2 className="text-2xl sm:text-3xl font-semibold text-gray-800">
-          Frequently Asked <span className="text-customBlue">Questions</span>
+    <div className="faq-section">
+      <div className="faq-container">
+        <h2 className="faq-heading">
+          Frequently Asked <span className="highlight">Questions</span>
         </h2>
 
-        {/* Underline */}
-        <div className="w-16 h-1 bg-customBlue mx-auto my-4"></div>
+        <div className="underline"></div>
 
-        {/* FAQ Section */}
-        <div className="bg-white shadow-lg rounded-2xl p-6 sm:p-8 mt-8 text-left">
+        <div className="faq-box">
           {faqs.map((faq, index) => (
-            <div key={index} className="border-b last:border-none">
+            <div key={index} className="faq-item">
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full flex justify-between items-center py-4 text-lg font-medium text-gray-700 hover:text-customBlue transition"
+                className="faq-question"
               >
                 {faq.question}
                 <FaChevronDown
-                  className={`text-gray-600 transition-transform duration-300 ${
-                    openIndex === index ? "rotate-180" : ""
-                  }`}
+                  className={`faq-icon ${openIndex === index ? "rotate" : ""}`}
                 />
               </button>
               {openIndex === index && (
-                <p className="text-gray-600 px-4 pb-4">{faq.answer}</p>
+                <p className="faq-answer">{faq.answer}</p>
               )}
             </div>
           ))}
