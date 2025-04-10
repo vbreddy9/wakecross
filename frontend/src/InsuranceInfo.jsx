@@ -1,41 +1,36 @@
 import { FaCheck } from "react-icons/fa";
 
+
 const InsuranceInfo = () => {
   return (
-    <div className="bg-gray-100 py-16 px-6 sm:px-12">
-      <div className="max-w-4xl mx-auto text-center">
+    <div className="insurance-section">
+      <div className="insurance-container">
         {/* Heading */}
-        <h2 className="text-2xl sm:text-3xl font-light text-gray-800">
-          We Are <span className="font-bold">In-Network</span> with the Following <span className="font-bold">Insurances</span>
+        <h2 className="insurance-heading">
+          We Are <span className="bold">In-Network</span> with the Following <span className="bold">Insurances</span>
         </h2>
 
         {/* Underline */}
-        <div className="w-16 h-1 bg-customBlue mx-auto my-4"></div>
+        <div className="underline"></div>
 
-        {/* Insurance List - 3 Columns Layout */}
-        <div className="text-left">
-          {/* Grid Layout */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {[
-              "Ameritas",
-              "Cigna",
-              "GEHA",
-              "Guardian",
-              "Humana",
-              "Lincoln Financial",
-              "Principal",
-              "UHC",
-              "No Medicaid Patients*",
-            ].map((insurance, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-2 text-lg bg-gray-50 p-3 rounded-lg shadow-sm hover:shadow-md transition duration-300"
-              >
-                <FaCheck className="text-customBlue" />
-                {insurance}
-              </div>
-            ))}
-          </div>
+        {/* Insurance List */}
+        <div className="insurance-list">
+          {[
+            "Ameritas",
+            "Cigna",
+            "GEHA",
+            "Guardian",
+            "Humana",
+            "Lincoln Financial",
+            "Principal",
+            "UHC",
+            "No Medicaid Patients*",
+          ].map((insurance, i) => (
+            <div key={i} className="insurance-item">
+              <FaCheck className="check-icon" />
+              {insurance}
+            </div>
+          ))}
         </div>
       </div>
     </div>
