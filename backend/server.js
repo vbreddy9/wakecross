@@ -29,7 +29,7 @@ const formatPhoneNumber = (number) => {
 
 // Basic route
 app.get("/home", (req, res) => {
-  res.status(200).json("Backend working for Elderly Care form");
+  res.status(200).json("Backend working");
 });
 
 // Main submission route
@@ -64,16 +64,16 @@ app.post("/send-email", (req, res) => {
 
     // Auto-reply to client
     const clientMailOptions = {
-      from: '"British Elderly Care" <info@britishelderlycare.com>',
+      from: '"Wakecross Famlity Dentistry" <info@britishelderlycare.com>',
       to: email,
       subject: "Thank You for Your Appointment Request",
       html: `
         <p>Dear ${firstName},</p>
-        <p>Thank you for reaching out to British Elderly Care. We’ve received your appointment request and will be in touch shortly.</p>
+        <p>Thank you for reaching out to Wake Cross Family Dentistry. We’ve received your appointment request and will be in touch shortly.</p>
         <p><strong>Phone:</strong> ${formattedPhone}</p>
         <p>If your request is urgent, please call us at <a href="tel:+101902921475">+1 0190 292 1475</a>.</p>
         <br />
-        <p>Warm regards,<br/>British Elderly Care Team</p>
+        <p>Warm regards,<br/>Wakecross Familty Team</p>
       `,
     };
 
