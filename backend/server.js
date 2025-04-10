@@ -63,12 +63,12 @@ app.post("/send-email", (req, res) => {
               <tr>
                 <td style="padding:24px;">
                   <ul style="list-style:none; padding:0; margin:0; font-size:15px; line-height:1.6;">
-                    <li><strong style="color:#0077b6;">Full Name:</strong> ${firstName} ${lastName}</li>
-                    <li><strong style="color:#0077b6;">Email:</strong> ${email}</li>
-                    <li><strong style="color:#0077b6;">Phone:</strong> ${formattedPhone}</li>
-                    <li><strong style="color:#0077b6;">Date of Birth:</strong> ${dob}</li>
-                    <li><strong style="color:#0077b6;">Referral Source:</strong> ${referralSource || 'N/A'}</li>
-                    <li><strong style="color:#0077b6;">IP Address:</strong> ${userIp}</li>
+                    <li><strong style="color:#684749;">Full Name:</strong> ${firstName} ${lastName}</li>
+                    <li><strong style="color:#684749;">Email:</strong> ${email}</li>
+                    <li><strong style="color:#684749;">Phone:</strong> ${formattedPhone}</li>
+                    <li><strong style="color:#684749;">Date of Birth:</strong> ${dob}</li>
+                    <li><strong style="color:#684749;">Referral Source:</strong> ${referralSource || 'N/A'}</li>
+                    <li><strong style="color:#684749;">IP Address:</strong> ${userIp}</li>
                   </ul>
                 </td>
               </tr>
@@ -106,13 +106,13 @@ app.post("/send-email", (req, res) => {
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding:24px; font-size:15px; line-height:1.6; style="color:#000000;">
+                  <td style="padding:24px 32px; font-size:15px; line-height:1.6; color:#000000;">
                     <p>Dear ${firstName},</p>
                     <p>Thank you for reaching out to <strong>Wakecross Family Dentistry</strong>. We’ve received your appointment request and will be in touch shortly.</p>
                     <p><strong>Full Name:</strong></strong> ${firstName} ${lastName}</p>
                     <p><strong>Phone:</strong> ${formattedPhone}</p>
                     <p>If your request is urgent, please call us at 
-                      <a href="tel:+101902921475" style="color:#684749; text-decoration:none;"><strong>+1 0190 292 1475</strong></a>.
+                      <a href="tel:+101902921475" style="color:#684749; text-decoration:none;"><strong><u>+1 0190 292 1475</u></strong></a>.
                     </p>
                     <br/>
                     <p>Warm regards,<br/><strong>Wakecross Family Team</strong></p>
