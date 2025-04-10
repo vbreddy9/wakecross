@@ -4,8 +4,10 @@ import {
   FaTooth, FaRegSmile, FaClinicMedical, FaUserMd,
   FaHandsHelping, FaPhoneAlt, FaCalendarCheck, FaClock
 } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const RegistrationForm = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -16,6 +18,7 @@ const RegistrationForm = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validate = () => {
     const newErrors = {};
@@ -46,9 +49,10 @@ const RegistrationForm = () => {
     e.preventDefault();
     if (!validate()) return;
 
+    setIsSubmitting(true);
+
     try {
       await axios.post("https://wakecross-backend.vercel.app/send-email", formData);
-      alert("Form Submitted Successfully!");
       setFormData({
         firstName: "",
         lastName: "",
@@ -57,16 +61,18 @@ const RegistrationForm = () => {
         dob: "",
         referralSource: "",
       });
+      navigate("/thankyou");
     } catch (err) {
       console.error("Submission Error", err);
       alert("Submission Failed. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
     <div className="w-full max-w-[1200px] mx-auto px-4 py-16 relative">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 relative">
-
         {/* Why Choose Us Section */}
         <div className="p-8 relative z-10">
           <h3 className="text-2xl font-semibold text-customBlue mb-2 relative inline-block">
@@ -140,9 +146,12 @@ const RegistrationForm = () => {
 
               <button
                 type="submit"
-                className="w-full bg-customBlue text-white py-2 px-4 rounded-lg hover:bg-gray-500 transition text-sm sm:text-base"
+                disabled={isSubmitting}
+                className={`w-full text-white py-2 px-4 rounded-lg transition text-sm sm:text-base ${
+                  isSubmitting ? "bg-gray-400 cursor-not-allowed" : "bg-customBlue hover:bg-gray-500"
+                }`}
               >
-                Submit
+                {isSubmitting ? "Submitting..." : "Submit"}
               </button>
             </form>
           </div>
