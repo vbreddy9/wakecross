@@ -2,7 +2,7 @@
 import { FaCheckCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const Thankyou = () => {
+const ThankYou = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-white px-4">
       <div className="bg-white p-8 rounded-xl shadow-lg text-center max-w-md w-full">
@@ -20,4 +20,4 @@ const Thankyou = () => {
   );
 };
 
-export default Thankyou;
+export default ThankYou;
