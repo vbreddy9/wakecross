@@ -101,7 +101,7 @@ app.post("/send-email", (req, res) => {
             <td align="center">
               <table width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff; border-radius:8px; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.1); font-family:Arial, sans-serif; color:#333;">
                 <tr>
-                  <td style="background-color:#2e86c1; padding:20px; text-align:center;">
+                  <td style="background-color:#684749; padding:20px; text-align:center;">
                     <h2 style="color:#ffffff; margin:0; font-size:22px;">Wakecross Family Dentistry</h2>
                   </td>
                 </tr>
@@ -109,9 +109,10 @@ app.post("/send-email", (req, res) => {
                   <td style="padding:24px; font-size:15px; line-height:1.6;">
                     <p>Dear ${firstName},</p>
                     <p>Thank you for reaching out to <strong>Wakecross Family Dentistry</strong>. We’ve received your appointment request and will be in touch shortly.</p>
+                    <p><strong>Full Name:</strong></strong> ${firstName} ${lastName}</p>
                     <p><strong>Phone:</strong> ${formattedPhone}</p>
                     <p>If your request is urgent, please call us at 
-                      <a href="tel:+101902921475" style="color:#2e86c1; text-decoration:none;">+1 0190 292 1475</a>.
+                      <a href="tel:+101902921475" style="color:#684749; text-decoration:none;">+1 0190 292 1475</a>.
                     </p>
                     <br/>
                     <p>Warm regards,<br/><strong>Wakecross Family Team</strong></p>
@@ -119,7 +120,7 @@ app.post("/send-email", (req, res) => {
                 </tr>
                 <tr>
                   <td style="background-color:#eaf3fb; text-align:center; padding:16px; font-size:13px; color:#555;">
-                    <p style="margin:0;">This is an automated message. Please do not reply to this email.</p>
+                    <p style="margin:0;">You can simply reply to this email if you have any further questions or would like to update your request.</p>
                     <p style="margin:4px 0 0;">&copy; ${new Date().getFullYear()} Wakecross Family Dentistry</p>
                   </td>
                 </tr>
