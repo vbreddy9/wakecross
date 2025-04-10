@@ -54,13 +54,13 @@ const RegistrationForm = () => {
         
         {/* Why Choose Us Section */}
         <div className="p-8 relative z-10">
-        <div className="relative inline-block">
-          <h3 className="text-xl sm:text-2xl font-semibold text-customBlue mb-0">
-            Why Choose Us?
-          </h3>
-          <div className="w-16 sm:w-20 h-1 bg-customBlue absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
-        </div>
-        <ul className="space-y-4 text-base sm:text-lg mt-8">
+          <div className="relative inline-block">
+            <h3 className="text-xl sm:text-2xl font-semibold text-customBlue mb-0">
+              Why Choose Us?
+            </h3>
+            <div className="w-16 sm:w-20 h-1 bg-customBlue absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
+          </div>
+          <ul className="space-y-4 text-base sm:text-lg mt-8">
             {[
               { icon: FaTooth, text: "Comprehensive dental check-ups & cleanings" },
               { icon: FaRegSmile, text: "Expert cosmetic dentistry for a brighter smile" },
@@ -80,25 +80,39 @@ const RegistrationForm = () => {
 
         {/* Registration Form (Overlapping) */}
         <div className="relative">
-        <div className="bg-white p-6 rounded-lg shadow-lg w-full relative lg:absolute lg:-top-56 lg:left-1/2 lg:-translate-x-1/2 z-20">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-full relative lg:absolute lg:-top-56 lg:left-1/2 lg:-translate-x-1/2 z-20">
             <h2 className="text-xl sm:text-2xl font-bold text-center mb-4">SCHEDULE NOW</h2>
             <div className="w-16 sm:w-20 h-1 bg-customBlue mx-auto mb-4"></div>
             <form onSubmit={handleSubmit} className="space-y-4">
-              {["firstName", "lastName", "email", "phoneNumber", "dob"].map((field, index) => (
+              {[
+                { name: "firstName", type: "text", placeholder: "Enter your first name" },
+                { name: "lastName", type: "text", placeholder: "Enter your last name" },
+                { name: "email", type: "email", placeholder: "Enter your email address" },
+                { name: "phoneNumber", type: "text", placeholder: "+1 (XXX) XXX-XXXX" },
+                { name: "dob", type: "date", placeholder: "" },
+              ].map((field, index) => (
                 <div key={index}>
-                  <label className="block font-medium capitalize text-sm sm:text-base">{field.replace(/([A-Z])/g, " $1")}</label>
+                  <label className="block font-medium capitalize text-sm sm:text-base">
+                    {field.name.replace(/([A-Z])/g, " $1")}
+                  </label>
                   <input
-                    type={field === "email" ? "email" : field === "dob" ? "date" : "text"}
-                    name={field}
-                    value={formData[field]}
+                    type={field.type}
+                    name={field.name}
+                    value={formData[field.name]}
                     onChange={handleChange}
+                    placeholder={field.placeholder}
                     className="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300 text-sm sm:text-base"
                   />
-                  {errors[field] && <p className="text-red-500 text-xs sm:text-sm">{errors[field]}</p>}
+                  {errors[field.name] && (
+                    <p className="text-red-500 text-xs sm:text-sm">{errors[field.name]}</p>
+                  )}
                 </div>
               ))}
+
               <div>
-                <label className="block font-medium text-sm sm:text-base">How Did You Hear About Us?</label>
+                <label className="block font-medium text-sm sm:text-base">
+                  How Did You Hear About Us?
+                </label>
                 <select
                   name="referralSource"
                   value={formData.referralSource}
@@ -112,13 +126,16 @@ const RegistrationForm = () => {
                   <option value="Other">Other</option>
                 </select>
               </div>
-              <button type="submit" className="w-full bg-customBlue text-white py-2 px-4 rounded-lg hover:bg-gray-500 transition text-sm sm:text-base">
+
+              <button
+                type="submit"
+                className="w-full bg-customBlue text-white py-2 px-4 rounded-lg hover:bg-gray-500 transition text-sm sm:text-base"
+              >
                 Submit
               </button>
             </form>
           </div>
         </div>
-
       </div>
     </div>
   );
