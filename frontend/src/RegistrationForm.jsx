@@ -109,7 +109,9 @@ const RegistrationForm = () => {
                     name={name}
                     value={formData[name]}
                     onChange={handleChange}
-                    placeholder={name === "phoneNumber" ? "+1 (XXX) XXX-XXXX" : ""}
+                    placeholder={
+                      name === "phoneNumber" ? "e.g., 9191234567" : name === "dob" ? "MM/DD/YYYY" : ""
+                    }
                     className="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300 text-sm sm:text-base"
                   />
                   {errors[name] && (
