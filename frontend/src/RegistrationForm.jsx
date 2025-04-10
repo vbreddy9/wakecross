@@ -1,7 +1,8 @@
 import { useState } from "react";
+import axios from "axios";
 import {
-  FaTooth, FaRegSmile, FaClinicMedical, FaUserMd, FaHandsHelping,
-  FaPhoneAlt, FaCalendarCheck, FaClock
+  FaTooth, FaRegSmile, FaClinicMedical, FaUserMd,
+  FaHandsHelping, FaPhoneAlt, FaCalendarCheck, FaClock
 } from "react-icons/fa";
 
 const RegistrationForm = () => {
@@ -17,7 +18,7 @@ const RegistrationForm = () => {
   const [errors, setErrors] = useState({});
 
   const validate = () => {
-    let newErrors = {};
+    const newErrors = {};
     if (!formData.firstName.trim()) newErrors.firstName = "First Name is required";
     if (!formData.lastName.trim()) newErrors.lastName = "Last Name is required";
     if (!formData.email.trim()) {
@@ -28,39 +29,51 @@ const RegistrationForm = () => {
     if (!formData.phoneNumber.trim()) {
       newErrors.phoneNumber = "Phone Number is required";
     } else if (!/^\d{7,15}$/.test(formData.phoneNumber)) {
-      newErrors.phoneNumber = "Invalid phone number (Only numbers, 7-15 digits)";
+      newErrors.phoneNumber = "Invalid phone number (7-15 digits)";
     }
     if (!formData.dob) newErrors.dob = "Date of Birth is required";
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (validate()) {
-      console.log("Form Submitted Successfully:", formData);
+    if (!validate()) return;
+
+    try {
+      await axios.post("http://localhost:5000/send-email", formData);
       alert("Form Submitted Successfully!");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phoneNumber: "",
+        dob: "",
+        referralSource: "",
+      });
+    } catch (err) {
+      console.error("Submission Error", err);
+      alert("Submission Failed. Please try again later.");
     }
   };
 
   return (
-    <div className="w-full max-w-[1200px] mx-auto px-0 sm:px-4 py-16 relative">
+    <div className="w-full max-w-[1200px] mx-auto px-4 py-16 relative">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 relative">
-        
+
         {/* Why Choose Us Section */}
         <div className="p-8 relative z-10">
-          <div className="relative inline-block">
-            <h3 className="text-xl sm:text-2xl font-semibold text-customBlue mb-0">
-              Why Choose Us?
-            </h3>
-            <div className="w-16 sm:w-20 h-1 bg-customBlue absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
-          </div>
-          <ul className="space-y-4 text-base sm:text-lg mt-8">
+          <h3 className="text-2xl font-semibold text-customBlue mb-2 relative inline-block">
+            Why Choose Us?
+            <div className="w-20 h-1 bg-customBlue absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
+          </h3>
+          <ul className="space-y-4 text-lg mt-8">
             {[
               { icon: FaTooth, text: "Comprehensive dental check-ups & cleanings" },
               { icon: FaRegSmile, text: "Expert cosmetic dentistry for a brighter smile" },
@@ -72,39 +85,35 @@ const RegistrationForm = () => {
               { icon: FaCalendarCheck, text: "Easy online appointment booking" },
             ].map((item, index) => (
               <li key={index} className="flex items-center">
-                <item.icon className="text-customBlue mr-4 text-lg sm:text-xl" /> {item.text}
+                <item.icon className="text-customBlue mr-4 text-xl" />
+                {item.text}
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Registration Form (Overlapping) */}
+        {/* Registration Form */}
         <div className="relative">
           <div className="bg-white p-6 rounded-lg shadow-lg w-full relative lg:absolute lg:-top-56 lg:left-1/2 lg:-translate-x-1/2 z-20">
-            <h2 className="text-xl sm:text-2xl font-bold text-center mb-4">SCHEDULE NOW</h2>
-            <div className="w-16 sm:w-20 h-1 bg-customBlue mx-auto mb-4"></div>
+            <h2 className="text-2xl font-bold text-center mb-4">SCHEDULE NOW</h2>
+            <div className="w-20 h-1 bg-customBlue mx-auto mb-4"></div>
+
             <form onSubmit={handleSubmit} className="space-y-4">
-              {[
-                { name: "firstName", type: "text", placeholder: "Enter your first name" },
-                { name: "lastName", type: "text", placeholder: "Enter your last name" },
-                { name: "email", type: "email", placeholder: "Enter your email address" },
-                { name: "phoneNumber", type: "text", placeholder: "+1 (XXX) XXX-XXXX" },
-                { name: "dob", type: "date", placeholder: "" },
-              ].map((field, index) => (
-                <div key={index}>
+              {["firstName", "lastName", "email", "phoneNumber", "dob"].map((name) => (
+                <div key={name}>
                   <label className="block font-medium capitalize text-sm sm:text-base">
-                    {field.name.replace(/([A-Z])/g, " $1")}
+                    {name.replace(/([A-Z])/g, " $1")}
                   </label>
                   <input
-                    type={field.type}
-                    name={field.name}
-                    value={formData[field.name]}
+                    type={name === "dob" ? "date" : name === "email" ? "email" : "text"}
+                    name={name}
+                    value={formData[name]}
                     onChange={handleChange}
-                    placeholder={field.placeholder}
+                    placeholder={name === "phoneNumber" ? "+1 (XXX) XXX-XXXX" : ""}
                     className="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300 text-sm sm:text-base"
                   />
-                  {errors[field.name] && (
-                    <p className="text-red-500 text-xs sm:text-sm">{errors[field.name]}</p>
+                  {errors[name] && (
+                    <p className="text-red-500 text-xs sm:text-sm">{errors[name]}</p>
                   )}
                 </div>
               ))}
