@@ -9,7 +9,6 @@ import ReviewCard from './ReviewCard.jsx';
 import WorryFreeSection from './WorryFreeSection.jsx';
 import InsuranceInfo from './InsuranceInfo.jsx';
 import DentalFAQ from './DentalFAQ.jsx';
-import DentalServices from './DentalServices.jsx;
 import ThankYouPage from './ThankYou.jsx'; // <-- Import it
 
 const HomePage = () => (
@@ -20,7 +19,6 @@ const HomePage = () => (
     <ReviewCard />
     <WorryFreeSection />
     <InsuranceInfo />
-    <DentalServices/>
     <DentalFAQ />
     <ContactDetails />
     <Footer />
