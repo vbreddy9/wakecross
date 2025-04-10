@@ -4,10 +4,9 @@ import {
   FaTooth, FaRegSmile, FaClinicMedical, FaUserMd,
   FaHandsHelping, FaPhoneAlt, FaCalendarCheck, FaClock
 } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+
 
 const RegistrationForm = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -18,7 +17,6 @@ const RegistrationForm = () => {
   });
 
   const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validate = () => {
     const newErrors = {};
@@ -49,10 +47,9 @@ const RegistrationForm = () => {
     e.preventDefault();
     if (!validate()) return;
 
-    setIsSubmitting(true);
-
     try {
-      await axios.post("https://wakecross-backend.vercel.app/send-email", formData);
+      await axios.post("http://localhost:5000/send-email", formData);
+      alert("Form Submitted Successfully!");
       setFormData({
         firstName: "",
         lastName: "",
@@ -61,25 +58,23 @@ const RegistrationForm = () => {
         dob: "",
         referralSource: "",
       });
-      navigate("/thankyou");
     } catch (err) {
       console.error("Submission Error", err);
       alert("Submission Failed. Please try again later.");
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="w-full max-w-[1200px] mx-auto px-4 py-16 relative">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 relative">
-        {/* Why Choose Us Section */}
-        <div className="p-8 relative z-10">
-          <h3 className="text-2xl font-semibold text-customBlue mb-2 relative inline-block">
+    <div className="registration-container">
+      <div className="registration-grid">
+
+        {/* Left Section */}
+        <div className="choose-us-section">
+          <h3 className="section-heading">
             Why Choose Us?
-            <div className="w-20 h-1 bg-customBlue absolute left-1/2 transform -translate-x-1/2 mt-2"></div>
+            <div className="section-underline"></div>
           </h3>
-          <ul className="space-y-4 text-lg mt-8">
+          <ul className="choose-us-list">
             {[
               { icon: FaTooth, text: "Comprehensive dental check-ups & cleanings" },
               { icon: FaRegSmile, text: "Expert cosmetic dentistry for a brighter smile" },
@@ -90,24 +85,24 @@ const RegistrationForm = () => {
               { icon: FaPhoneAlt, text: "Emergency dental services available 24/7" },
               { icon: FaCalendarCheck, text: "Easy online appointment booking" },
             ].map((item, index) => (
-              <li key={index} className="flex items-center">
-                <item.icon className="text-customBlue mr-4 text-xl" />
+              <li key={index} className="choose-us-item">
+                <item.icon className="choose-us-icon" />
                 {item.text}
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Registration Form */}
-        <div className="relative">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-full relative lg:absolute lg:-top-56 lg:left-1/2 lg:-translate-x-1/2 z-20">
-            <h2 className="text-2xl font-bold text-center mb-4">SCHEDULE NOW</h2>
-            <div className="w-20 h-1 bg-customBlue mx-auto mb-4"></div>
+        {/* Right Section */}
+        <div className="form-wrapper">
+          <div className="registration-form-card">
+            <h2 className="form-title">SCHEDULE NOW</h2>
+            <div className="form-underline"></div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="registration-form">
               {["firstName", "lastName", "email", "phoneNumber", "dob"].map((name) => (
-                <div key={name}>
-                  <label className="block font-medium capitalize text-sm sm:text-base">
+                <div key={name} className="form-group">
+                  <label className="form-label">
                     {name.replace(/([A-Z])/g, " $1")}
                   </label>
                   <input
@@ -115,26 +110,22 @@ const RegistrationForm = () => {
                     name={name}
                     value={formData[name]}
                     onChange={handleChange}
-                    placeholder={
-                      name === "phoneNumber" ? "e.g., 9191234567" : name === "dob" ? "MM/DD/YYYY" : ""
-                    }
-                    className="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300 text-sm sm:text-base"
+                    placeholder={name === "phoneNumber" ? "+1 (XXX) XXX-XXXX" : ""}
+                    className="form-input"
                   />
                   {errors[name] && (
-                    <p className="text-red-500 text-xs sm:text-sm">{errors[name]}</p>
+                    <p className="form-error">{errors[name]}</p>
                   )}
                 </div>
               ))}
 
-              <div>
-                <label className="block font-medium text-sm sm:text-base">
-                  How Did You Hear About Us?
-                </label>
+              <div className="form-group">
+                <label className="form-label">How Did You Hear About Us?</label>
                 <select
                   name="referralSource"
                   value={formData.referralSource}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border rounded-lg focus:ring focus:ring-blue-300 text-sm sm:text-base"
+                  className="form-input"
                 >
                   <option value="">Select an option</option>
                   <option value="Google">Google</option>
@@ -144,18 +135,13 @@ const RegistrationForm = () => {
                 </select>
               </div>
 
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`w-full text-white py-2 px-4 rounded-lg transition text-sm sm:text-base ${
-                  isSubmitting ? "bg-gray-400 cursor-not-allowed" : "bg-customBlue hover:bg-gray-500"
-                }`}
-              >
-                {isSubmitting ? "Submitting..." : "Submit"}
+              <button type="submit" className="submit-btn">
+                Submit
               </button>
             </form>
           </div>
         </div>
+
       </div>
     </div>
   );
