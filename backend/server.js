@@ -9,7 +9,7 @@ const PORT = 5000;
 
 // Allow only frontend domain (no trailing slash!)
 app.use(cors({
-  origin: "https://wakecross.vercel.app",
+  origin: "https://wakecrossf.vercel.app/",
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type"],
   credentials: true,
