@@ -563,25 +563,26 @@ html, body {
   }
 }
 
-/* HIGHLIGHT COLORS */
+/* HIGHLIGHT COLORS AND PRICE STYLING */
 .highlight {
   color: #56312e;
 }
 
 .highlight.price {
-  font-weight: 600;
-  font-size: 1.25rem;
+  font-weight: 600;       
+  font-size: 1.25rem;    
 }
 
+/* Responsive font sizes */
 @media (min-width: 640px) {
   .highlight.price {
-    font-size: 1.75rem;
+    font-size: 1.75rem;   
   }
 }
 
 @media (min-width: 768px) {
   .highlight.price {
-    font-size: 2rem;
+    font-size: 2rem;     
   }
 }
 
