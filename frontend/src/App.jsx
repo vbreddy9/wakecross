@@ -9,7 +9,7 @@ import ReviewCard from './ReviewCard.jsx';
 import WorryFreeSection from './WorryFreeSection.jsx';
 import InsuranceInfo from './InsuranceInfo.jsx';
 import DentalFAQ from './DentalFAQ.jsx';
-import ThankYouPage from './ThankYou.jsx'; // <-- Import it
+import ThankYouPage from './ThankYou.jsx'; 
 
 const HomePage = () => (
   <>
