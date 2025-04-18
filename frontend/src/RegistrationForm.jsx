@@ -5,7 +5,6 @@ import {
   FaHandsHelping, FaPhoneAlt, FaCalendarCheck, FaClock
 } from "react-icons/fa";
 
-
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -17,6 +16,7 @@ const RegistrationForm = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false); // <-- Added loading state
 
   const validate = () => {
     const newErrors = {};
@@ -47,6 +47,7 @@ const RegistrationForm = () => {
     e.preventDefault();
     if (!validate()) return;
 
+    setLoading(true); // Start loading
     try {
       await axios.post("https://wakecross-backend.vercel.app/send-email", formData);
       alert("Form Submitted Successfully!");
@@ -61,6 +62,8 @@ const RegistrationForm = () => {
     } catch (err) {
       console.error("Submission Error", err);
       alert("Submission Failed. Please try again later.");
+    } finally {
+      setLoading(false); // End loading
     }
   };
 
@@ -135,8 +138,8 @@ const RegistrationForm = () => {
                 </select>
               </div>
 
-              <button type="submit" className="submit-btn">
-                Submit
+              <button type="submit" className="submit-btn" disabled={loading}>
+                {loading ? "Submitting..." : "Submit"}
               </button>
             </form>
           </div>
