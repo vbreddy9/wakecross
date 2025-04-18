@@ -28,8 +28,8 @@ app.get("/home", (req, res) => {
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "info@vr2tech.in",
-    pass: "qxsj qqwd puhd aznj", // App password
+    user: "vk4756353@gmail.com",
+    pass: "xhip vwyx vcln yhzr", // App password
   },
 });
 
@@ -48,7 +48,7 @@ app.post("/send-email", (req, res) => {
   // Admin Email
   const adminMailOptions = {
     from: `"${firstName} ${lastName}" <${email}>`,
-    to: "info@vr2tech.in",
+    to: "vk4756353@gmail.com",
     subject: "New Appointment Request",
     html: `
       <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f4f6f8; padding:20px;">
@@ -92,7 +92,7 @@ app.post("/send-email", (req, res) => {
 
     // Auto-reply Email
     const clientMailOptions = {
-      from: '"Wakecross Family Dentistry" <info@vr2tech.in>',
+      from: '"Wakecross Family Dentistry" <vk4756353@gmail.com>',
       to: email,
       subject: "Thank You for Your Appointment Request",
       html: `
