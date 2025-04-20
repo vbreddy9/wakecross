@@ -49,7 +49,7 @@ const RegistrationForm = () => {
 
     setLoading(true); // Start loading
     try {
-      await axios.post("https://wakecross-backend.vercel.app/send-email", formData);
+      await axios.post("https://api.wakecrossdentistry.com/send-email", formData);
       alert("Form Submitted Successfully!");
       setFormData({
         firstName: "",
