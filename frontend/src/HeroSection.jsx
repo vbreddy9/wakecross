@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./assets/banner.png";
+import logo from "./assets/banner.webp";
 
 
 const HeroSection = () => {
