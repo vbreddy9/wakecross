@@ -50,6 +50,12 @@ const RegistrationForm = () => {
     setLoading(true); // Start loading
     try {
       await axios.post("https://api.wakecrossdentistry.com/send-email", formData);
+            // ✅ Push success event to GTM
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: "form_submission_success",
+            formName: "Schedule Form", // Optional, helps identify form in GTM
+          });
       alert("Form Submitted Successfully!");
       setFormData({
         firstName: "",
