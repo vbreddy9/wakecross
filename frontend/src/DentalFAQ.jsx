@@ -36,7 +36,7 @@ const DentalFAQ = () => {
     <div className="faq-section">
       <div className="faq-container">
         <h2 className="faq-heading">
-          Frequently Asked <span className="regular">Quetions</span>
+          Frequently Asked<span style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic' }}>Questions</span>
         </h2>
 
         <div className="underline"></div>
