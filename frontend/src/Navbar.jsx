@@ -1,6 +1,6 @@
 import React from "react";
 import { FaPhoneAlt } from "react-icons/fa";
-import mlogo from "./assets/logo-w.png";
+import mlogo from "./assets/logo-w.webp";
 
 
 const Navbar = () => {
