@@ -1,5 +1,5 @@
 import { FaStar, FaStarHalfAlt } from "react-icons/fa";
-import wake from "./assets/wake-cross-family-dentist.jpg";
+import wake from "./assets/wake-cross-family-dentist.webp";
 
 
 const ReviewCard = () => {
