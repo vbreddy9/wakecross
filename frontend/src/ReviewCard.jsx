@@ -12,7 +12,7 @@ const ReviewCard = () => {
 
       {/* Text & Review Section */}
       <div className="text-section">
-        <h2 className="heading">#1 Rated Dentist</h2>
+        <h2 className="heading">The #1 Choice for Trusted Dentistry</h2>
         <p className="subheading">On Google</p>
 
         <div className="underline"></div>
