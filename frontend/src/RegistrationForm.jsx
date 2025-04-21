@@ -118,6 +118,9 @@ const RegistrationForm = () => {
                     name={name}
                     value={formData[name]}
                     onChange={handleChange}
+                    placeholder={name === "firstName" ? "Enter first name" : ""}
+                    placeholder={name === "lastName" ? "Enter last name" : ""}
+                    placeholder={name === "email" ? "Enter your e-mail" : ""}
                     placeholder={name === "phoneNumber" ? "+1 (XXX) XXX-XXXX" : ""}
                     className="form-input"
                   />
