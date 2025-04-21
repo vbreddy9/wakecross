@@ -106,8 +106,7 @@ const RegistrationForm = () => {
         <div className="form-wrapper">
           <div className="registration-form-card">
             <h2 className="form-title">BOOK APPOINTMENT</h2>
-            <div className="form-underline"></div>
-
+            
             <form onSubmit={handleSubmit} className="registration-form">
               {["firstName", "lastName", "email", "phoneNumber", "dob"].map((name) => (
                 <div key={name} className="form-group">
