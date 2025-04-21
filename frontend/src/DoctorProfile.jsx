@@ -1,17 +1,13 @@
 import React from 'react';
-import wake from "./assets/wake-cross-family-dentist.webp";
+import shilpa from "./assets/dr-shilpa-koneru.webp";
 
 const DoctorProfile = () => {
-  const handleScrollTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <section className="doctor-section">
       <div className="doctor-container">
         <div className="doctor-left">
           <img
-            src="/dr-shilpa-koneru.webp"
+            src={shilpa}
             alt="Dr. Shilpa Koneru"
             className="doctor-image"
           />
@@ -35,10 +31,10 @@ const DoctorProfile = () => {
             <p>
               Looking for a dentist committed to your care? Reach out to us today and schedule a visit!
             </p>
-            <div className="cta-phone">📱 919-851-9690</div>
-            <button onClick={handleScrollTop} className="cta-button">
+            <div className="cta-phone">📱 (919)-453-0777</div>
+            <a href="tel:9194530777" className="cta-button">
               REQUEST APPOINTMENT
-            </button>
+            </a>
           </div>
         </div>
       </div>
