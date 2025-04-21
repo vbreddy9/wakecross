@@ -7,6 +7,7 @@ import ContactDetails from './ContactDetails';
 import RegistrationForm from './RegistrationForm.jsx';
 import ReviewCard from './ReviewCard.jsx';
 import WorryFreeSection from './WorryFreeSection.jsx';
+import DentalFeatures from './DentalFeatures.jsx';
 import InsuranceInfo from './InsuranceInfo.jsx';
 import DoctorProfile from './DoctorProfile.jsx';
 import DentalFAQ from './DentalFAQ.jsx';
@@ -19,6 +20,7 @@ const HomePage = () => (
     <RegistrationForm />
     <DoctorProfile />
     <InsuranceInfo />
+    <DentalFeatures />
     <WorryFreeSection />
     <ReviewCard />
     <DentalFAQ />
