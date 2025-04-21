@@ -15,7 +15,7 @@ const WorryFreeSection = () => {
           <h3 className="column-title">Stress-Free Sedation</h3>
           <ul className="feature-list">
             <li><FaCheck className="icon" /> Affordable laughing gas with any treatment.</li>
-            <li><FaCheck className="icon" /> IV sedation for deep relaxation.</li>
+           
             <li><FaCheck className="icon" /> Complete extensive treatment in one visit.</li>
           </ul>
         </div>
