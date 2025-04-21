@@ -12,16 +12,6 @@ const WorryFreeSection = () => {
       <div className="worryfree-grid">
         {/* Column 1 */}
         <div className="column">
-          <h3 className="column-title">Stress-Free Sedation</h3>
-          <ul className="feature-list">
-            <li><FaCheck className="icon" /> Affordable laughing gas with any treatment.</li>
-           
-            <li><FaCheck className="icon" /> Complete extensive treatment in one visit.</li>
-          </ul>
-        </div>
-
-        {/* Column 2 */}
-        <div className="column">
           <h3 className="column-title">Stress-Free Scheduling</h3>
           <ul className="feature-list">
             <li><FaCheck className="icon" /> Hours: 8:00 AM – 5:00 PM (Mon & Tue)</li>
@@ -31,7 +21,7 @@ const WorryFreeSection = () => {
           </ul>
         </div>
 
-        {/* Column 3 */}
+        {/* Column 2 */}
         <div className="column">
           <h3 className="column-title">Stress-Free Financing</h3>
           <ul className="feature-list">
