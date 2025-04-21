@@ -403,15 +403,6 @@ html, body {
   flex-shrink: 0;
 }
 
-.underline {
-  width: 4rem;
-  height: 3px;
-  background-color: #56312e;
-  margin: 1rem auto 2rem;
-  border-radius: 2px;
-}
-
-
 .review-card {
   max-width: 64rem;
   margin: 0 auto;
@@ -477,12 +468,6 @@ html, body {
   color: #4b5563;
 }
 
-.underline {
-  width: 4rem;
-  height: 0.25rem;
-  background-color: #56312e; /* customBlue */
-  margin: 0.5rem auto;
-}
 
 @media (min-width: 640px) {
   .underline {
@@ -820,13 +805,6 @@ html, body {
   font-weight: 700;
   text-align: center;
   margin-bottom: 1rem;
-}
-
-.form-underline {
-  width: 5rem;
-  height: 4px;
-  background-color: #56312e;
-  margin: 0 auto 1rem auto;
 }
 
 .registration-form {
