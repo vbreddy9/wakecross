@@ -968,86 +968,110 @@ html, body {
 .thankyou-button:hover {
   background-color: #3a1f1d;
 }
+/* Doctor Profile Page */
 .doctor-section {
   background-color: #b2b2b2;
-  padding: 40px 20px;
-  font-family: 'Segoe UI', sans-serif;
+  padding: 60px 20px;
+  font-family: 'Poppins', sans-serif;
+  color: #1a1a1a;
 }
 
 .doctor-container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 30px;
+  gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .doctor-left img.doctor-image {
   width: 100%;
-  border-radius: 10px;
+  border-radius: 12px;
   object-fit: cover;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
+/* Doctor Info */
 .doctor-right h2 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 700;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  color: #231f20;
+}
+
+.doctor-right h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #333;
 }
 
 .doctor-right p {
-  font-size: 1rem;
-  margin-bottom: 15px;
-  color: #222;
-  line-height: 1.6;
+  font-size: 1.05rem;
+  margin-bottom: 20px;
+  color: #2f2f2f;
+  line-height: 1.7;
 }
 
+/* Call to Action Box */
 .doctor-cta .cta-box {
-  background: #fff;
+  background: #ffffff;
   border-radius: 20px;
-  padding: 30px;
+  padding: 40px;
   text-align: center;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease;
+}
+
+.cta-box:hover {
+  transform: translateY(-5px);
 }
 
 .cta-box .cta-icon {
-  font-size: 2rem;
+  font-size: 2.4rem;
   color: #d08100;
-  margin-bottom: 10px;
-}
-
-.cta-box h3 {
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.cta-box p {
-  font-size: 1rem;
   margin-bottom: 15px;
 }
 
-.cta-phone {
-  font-size: 1.1rem;
+.cta-box h3 {
+  font-size: 1.6rem;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
+  color: #111;
 }
 
+.cta-box p {
+  font-size: 1.05rem;
+  margin-bottom: 18px;
+  color: #444;
+}
+
+.cta-phone {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #000;
+}
+
+/* CTA Button */
 .cta-button {
   background-color: #56312e;
   color: white;
   border: none;
-  padding: 12px 25px;
+  padding: 14px 30px;
   font-size: 1rem;
   font-weight: 600;
   border-radius: 9999px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .cta-button:hover {
   background-color: #542623;
+  transform: scale(1.05);
 }
 
+/* Responsive Layout */
 @media (min-width: 768px) {
   .doctor-container {
     grid-template-columns: 1fr 1fr;
@@ -1058,4 +1082,3 @@ html, body {
     grid-column: span 2;
   }
 }
-
