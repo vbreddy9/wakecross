@@ -24,9 +24,6 @@ const DoctorProfile = () => {
             Committed to lifelong learning, Dr. Shilpa Koneru actively pursues continuing education courses to expand her expertise in various dental procedures. She believes in staying at the forefront of advancements in dentistry to provide patients with the best possible care.
           </p>
            <p>
-           Currently residing in Apex with her husband and two children, Dr. Koneru enjoys traveling and playing badminton in her free time. Inspired by her uncle, a cardiologist, she has always felt a deep calling to serve others.
-          </p>
-           <p>
            For her, dentistry is more than a profession – it is a true passion. She looks forward to meeting each patient and helping them achieve their dental health goals.
           </p>
         </div>
