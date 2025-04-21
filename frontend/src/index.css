@@ -991,7 +991,7 @@ html, body {
 }
 /* Doctor Profile Page */
 .doctor-section {
-  background-color: #b2b2b2;
+  background-color: #dbd6d6;
   padding: 60px 20px;
   font-family: 'Poppins', sans-serif;
   color: #1a1a1a;
@@ -1036,7 +1036,7 @@ html, body {
 
 /* Call to Action Box */
 .doctor-cta .cta-box {
-  background: #ffffff;
+  background: #57312e;
   border-radius: 20px;
   padding: 40px;
   text-align: center;
@@ -1076,7 +1076,7 @@ html, body {
 
 /* CTA Button */
 .cta-button {
-  background-color: #56312e;
+  background-color: #57312e;
   color: white;
   border: none;
   padding: 14px 30px;
@@ -1088,7 +1088,7 @@ html, body {
 }
 
 .cta-button:hover {
-  background-color: #542623;
+  background-color: #aeada8;
   transform: scale(1.05);
 }
 
