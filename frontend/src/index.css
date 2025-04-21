@@ -968,3 +968,94 @@ html, body {
 .thankyou-button:hover {
   background-color: #3a1f1d;
 }
+.doctor-section {
+  background-color: #e2efec;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.doctor-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.doctor-left img.doctor-image {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.doctor-right h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.doctor-right p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  color: #222;
+  line-height: 1.6;
+}
+
+.doctor-cta .cta-box {
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.cta-box .cta-icon {
+  font-size: 2rem;
+  color: #d08100;
+  margin-bottom: 10px;
+}
+
+.cta-box h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.cta-box p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.cta-phone {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  background-color: #d08100;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #b86f00;
+}
+
+@media (min-width: 768px) {
+  .doctor-container {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .doctor-cta {
+    grid-column: span 2;
+  }
+}
+
