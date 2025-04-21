@@ -29,7 +29,7 @@ const DentalFeatures = () => {
     <section className="dental-section">
       <div className="worryfree-container">
       <h2 className="worryfree-heading">
-        Because <span className="bold">Dentistry</span> Should be <span className="bold">Stress-Free</span>
+        Expert Dental Care —  <span className="bold">Without the Stress</span> 
       </h2>
       </div>
       <div className="dental-grid">
