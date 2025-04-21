@@ -1033,7 +1033,7 @@ html, body {
 }
 
 .cta-button {
-  background-color: #d08100;
+  background-color: #56312e;
   color: white;
   border: none;
   padding: 12px 25px;
@@ -1045,7 +1045,7 @@ html, body {
 }
 
 .cta-button:hover {
-  background-color: #b86f00;
+  background-color: #542623;
 }
 
 @media (min-width: 768px) {
