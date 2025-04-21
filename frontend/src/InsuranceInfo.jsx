@@ -10,9 +10,6 @@ const InsuranceInfo = () => {
           We Are <span className="bold">In-Network</span> with the Following <span className="bold">Insurances</span>
         </h2>
 
-        {/* Underline */}
-        <div className="underline"></div>
-
         {/* Insurance List */}
         <div className="insurance-list">
           {[
