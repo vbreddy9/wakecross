@@ -1149,7 +1149,7 @@ html, body {
 
 .feature-icon {
   font-size: 2rem;
-  color: #2563eb; /* default blue, you can override per icon if needed */
+  color: #593334; 
 }
 
 .feature-title {
