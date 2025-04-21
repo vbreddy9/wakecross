@@ -27,6 +27,9 @@ const features = [
 const DentalFeatures = () => {
   return (
     <section className="dental-section">
+      <h2 className="worryfree-heading">
+        Because <span className="bold">Dentistry</span> Should be <span className="bold">Stress-Free</span>
+      </h2>
       <div className="dental-grid">
         {features.map((item, index) => (
           <div key={index} className="feature-card">
