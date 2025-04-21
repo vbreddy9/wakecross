@@ -17,10 +17,10 @@ const HomePage = () => (
     <Navbar />
     <HeroSection />
     <RegistrationForm />
-    <ReviewCard />
-    <WorryFreeSection />
-    <InsuranceInfo />
     <DoctorProfile />
+    <InsuranceInfo />
+    <WorryFreeSection />
+    <ReviewCard />
     <DentalFAQ />
     <ContactDetails />
     <Footer />
