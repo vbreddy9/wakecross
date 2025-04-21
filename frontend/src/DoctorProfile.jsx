@@ -18,10 +18,10 @@ const DoctorProfile = () => {
             Dr. Shilpa Koneru is honored to continue the esteemed legacy established by Dr. Naran over the past 25 years. As the new owner of the practice, she is excited about the opportunity to serve the community and build strong, lasting relationships with each patient.
           </p>
           <p>
-            Originally from India, Dr. Koneru earned a bachelor’s in dental surgery before completing a two-year International Dentist Program in Buffalo, New York, where she graduated in 2013. Since then, she has dedicated her career to providing high-quality dental care, participating in outreach programs and offering free services to underserved populations.
+            Originally from India, Dr. Shilpa Koneru earned a bachelor’s in dental surgery before completing a two-year International Dentist Program in Buffalo, New York, where she graduated in 2013. Since then, she has dedicated her career to providing high-quality dental care, participating in outreach programs and offering free services to underserved populations.
           </p>
           <p>
-            Committed to lifelong learning, Dr. Koneru actively pursues continuing education courses to expand her expertise in various dental procedures. She believes in staying at the forefront of advancements in dentistry to provide patients with the best possible care.
+            Committed to lifelong learning, Dr. Shilpa Koneru actively pursues continuing education courses to expand her expertise in various dental procedures. She believes in staying at the forefront of advancements in dentistry to provide patients with the best possible care.
           </p>
            <p>
            Currently residing in Apex with her husband and two children, Dr. Koneru enjoys traveling and playing badminton in her free time. Inspired by her uncle, a cardiologist, she has always felt a deep calling to serve others.
