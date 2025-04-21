@@ -23,6 +23,12 @@ const DoctorProfile = () => {
           <p>
             Committed to lifelong learning, Dr. Koneru actively pursues continuing education courses to expand her expertise in various dental procedures. She believes in staying at the forefront of advancements in dentistry to provide patients with the best possible care.
           </p>
+           <p>
+           Currently residing in Apex with her husband and two children, Dr. Koneru enjoys traveling and playing badminton in her free time. Inspired by her uncle, a cardiologist, she has always felt a deep calling to serve others.
+          </p>
+           <p>
+           For her, dentistry is more than a profession – it is a true passion. She looks forward to meeting each patient and helping them achieve their dental health goals.
+          </p>
         </div>
         <div className="doctor-cta">
           <div className="cta-box">
@@ -32,7 +38,7 @@ const DoctorProfile = () => {
               Looking for a dentist committed to your care? Reach out to us today and schedule a visit!
             </p>
             <div className="cta-phone">📱 (919)-453-0777</div>
-            <a href="tel:9194530777" className="cta-button">
+            <a href="tel:+19194530777" className="cta-button">
               REQUEST APPOINTMENT
             </a>
           </div>
