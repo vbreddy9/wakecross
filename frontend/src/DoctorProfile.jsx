@@ -1,4 +1,5 @@
 import React from 'react';
+import wake from "./assets/wake-cross-family-dentist.webp";
 
 const DoctorProfile = () => {
   const handleScrollTop = () => {
@@ -10,7 +11,7 @@ const DoctorProfile = () => {
       <div className="doctor-container">
         <div className="doctor-left">
           <img
-            src="/your-image-path.jpg"
+            src="/dr-shilpa-koneru.webp"
             alt="Dr. Shilpa Koneru"
             className="doctor-image"
           />
