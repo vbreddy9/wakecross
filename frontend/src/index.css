@@ -324,8 +324,9 @@ html, body {
 .check-icon {
   color: #56312e;
 }
+/* worry free component */
 .worryfree-container {
-  max-width: 72rem; /* max-w-6xl */
+  max-width: 72rem;
   margin: 0 auto;
   padding: 3rem 1.5rem;
   text-align: center;
@@ -340,7 +341,7 @@ html, body {
 .worryfree-heading {
   font-size: 1.75rem;
   font-weight: 300;
-  color: #374151; /* text-gray-700 */
+  color: #374151;
 }
 
 @media (min-width: 640px) {
@@ -353,7 +354,6 @@ html, body {
   font-weight: 700;
 }
 
-/* Grid Layout: 1 column on mobile, 2 on tablet+ */
 .worryfree-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -379,7 +379,7 @@ html, body {
   font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
-  color: #1f2937; /* text-gray-800 */
+  color: #1f2937;
 }
 
 .feature-list {
@@ -392,18 +392,17 @@ html, body {
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
-  color: #4b5563; /* text-gray-600 */
+  color: #4b5563;
   margin-bottom: 0.75rem;
   line-height: 1.5;
 }
 
 .icon {
-  color: #56312e; /* custom icon color */
+  color: #56312e;
   margin-top: 0.2rem;
   flex-shrink: 0;
 }
 
-/* Optional underline styling */
 .underline {
   width: 4rem;
   height: 3px;
@@ -411,6 +410,7 @@ html, body {
   margin: 1rem auto 2rem;
   border-radius: 2px;
 }
+
 
 .review-card {
   max-width: 64rem;
