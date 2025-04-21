@@ -15,9 +15,7 @@ const ReviewCard = () => {
         <h2 className="heading">The #1 Choice for Trusted Dentistry</h2>
         <p className="subheading">On Google</p>
 
-        <div className="underline"></div>
-
-        <p className="clinic-name">
+         <p className="clinic-name">
           Wake Cross Family Dentistry (Formerly Known as Raleigh Dental and Implants)
         </p>
 
