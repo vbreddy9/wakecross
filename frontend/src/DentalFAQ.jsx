@@ -39,8 +39,6 @@ const DentalFAQ = () => {
           Frequently Asked <span style={{ fontWeight: '100', fontFamily: 'Georgia, serif', fontStyle: 'italic' }}>Questions</span>
         </h2>
 
-        <div className="underline"></div>
-
         <div className="faq-box">
           {faqs.map((faq, index) => (
             <div key={index} className="faq-item">
