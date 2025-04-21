@@ -81,7 +81,7 @@ const RegistrationForm = () => {
         <div className="choose-us-section">
           <h3 className="section-heading">
             Why Choose Us?
-            <div className="section-underline"></div>
+            
           </h3>
           <ul className="choose-us-list">
             {[
@@ -105,7 +105,7 @@ const RegistrationForm = () => {
         {/* Right Section */}
         <div className="form-wrapper">
           <div className="registration-form-card">
-            <h2 className="form-title">SCHEDULE NOW</h2>
+            <h2 className="form-title">BOOK APPOINTMENT</h2>
             <div className="form-underline"></div>
 
             <form onSubmit={handleSubmit} className="registration-form">
