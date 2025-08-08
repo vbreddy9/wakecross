@@ -13,7 +13,7 @@ const DoctorProfile = () => {
           />
         </div>
         <div className="doctor-right">
-          <h2>SHILPA KONERU, DDS</h2>
+          <h2>DR. SHILPA KONERU, DDS</h2>
           <p>
             Dr. Shilpa Koneru is honored to continue the esteemed legacy established by Dr. Naran over the past 25 years. As the new owner of the practice, she is excited about the opportunity to serve the community and build strong, lasting relationships with each patient.
           </p>
