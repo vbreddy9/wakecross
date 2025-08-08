@@ -149,9 +149,14 @@ const RegistrationForm = () => {
                 </select>
               </div>
 
-              <button type="submit" className="submit-btn" disabled={loading}>
-                {loading ? "Submitting..." : "Submit"}
-              </button>
+              <button 
+              type="submit" 
+              className="submit-btn" 
+              disabled={loading}
+            >
+              {loading ? "Booking..." : "Book My $99 Exam & X-Rays"}
+            </button>
+
             </form>
           </div>
         </div>
