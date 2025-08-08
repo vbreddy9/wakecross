@@ -21,8 +21,9 @@ const HeroSection = () => {
             Comprehensive Exam & X-Rays for{" "}
             <span className="highlight price">$99</span>
           </p>
-          <p className="hero-desc">Take the first step towards your best smile today.</p>
-
+          <p className="hero-desc">Take the first step towards your best smile today. <br/><span style={{ color: "#b22222", fontWeight: "bold" }}>
+            Same-Day Appointments Available
+          </span> </p>
           <a href="tel:+19194530777">
             <button className="call-btn">CALL TODAY!</button>
           </a>
